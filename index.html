@@ -1,0 +1,150 @@
+<style>
+  
+input[type="text"] {
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  width: 600px;  
+}
+
+
+.send-button {
+  padding: 10px;
+  width: 70px;
+  font-size: 16px;
+  height: 40px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  
+}
+  
+.edit-button {
+  padding: 10px;
+  width: 70px;
+  font-size: 16px;
+  height: 40px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: none;
+  
+}
+  .new-question {
+  padding: 10px;
+  width: 70px;
+  font-size: 16px;
+  height: 40px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: none;
+ 
+}
+
+
+.message-box {
+  text-align: center;
+  background-color: black;
+  color: white;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  width: 300px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+}
+  
+  .message-box:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+
+
+  .black {
+    width: 300px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    font-family: arial;
+    font-weight: 450;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+    margin: 10px auto;
+  
+  }
+
+  .black:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .red {
+  width: 280px;
+  background-color: #d75c5c;
+  color: white;
+  font-family: arial;
+  font-weight: 450;
+  font-size: 18px;
+  padding: 10px;
+  text-align: center;
+  margin: 10px auto;
+}
+
+
+  .red:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+
+  #message-bar {
+    position: fixed;
+    bottom: 5px;
+
+  }
+  
+</style>
+
+<main></main>
+
+
+<div id="message-bar">
+  <input type="text" id="input-box">
+  <button class="send-button">Send</button>
+</div>
+
+<button class="edit-button">Edit</button>
+<button class="new-question">New</button>
+
+<script>
+  function newBox(classname, text){
+    const div = document.createElement('div');
+    div.className = classname;
+    div.innerHTML = `<p>${text}</p>`;
+    const main = document.querySelector('main');
+    main.appendChild(div);
+  }
+  newBox('red', 'AI: How can I help you?');
+
+  const sendBox = document.querySelector(".send-button");
+  const userInput = document.getElementById("input-box");
+  const messageBar = document.getElementById("message-bar");
+  
+
+  sendBox.addEventListener("click", function () {
+  const t = userInput.value
+  newBox('message-box', t)
+  newBox('red', 'AI: Answering Question')
+  messageBar.style.display = 'none'
+  document.querySelector('.edit-button').style.display = 'block'
+  document.querySelector('.new-question').style.display = 'block'
+  userInput.value = ''
+})
+
+</script>
