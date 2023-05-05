@@ -175,7 +175,6 @@ input[type="text"] {
   editQuestion.addEventListener("click", function() {
    const allBlackbox = document.querySelectorAll('.message-box')
    const lastBlackbox = allBlackbox[allBlackbox.length-1]
-   // console.log(lastBlackbox)  
    lastBlackbox.setAttribute("contenteditable", true)
    lastBlackbox.focus()
    lastBlackbox.style.backgroundColor = 'grey'
@@ -190,7 +189,6 @@ input[type="text"] {
    lastBlackbox.setAttribute("contenteditable", false)
    const allRedbox = document.querySelectorAll('.red') 
    const lastRedbox = allRedbox[allRedbox.length-1]
-   console.log(lastRedbox)
    lastRedbox.innerHTML = `<p>AI: Answering Updated Question</p>`;
    updateButton.style.display = 'none'
    editQuestion.style.display = 'block' 
