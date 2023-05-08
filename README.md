@@ -1,2 +1,2 @@
-# final-sketch-twobuttons
+# Editable AI Chatbot
 ◕ ◞ ◕ This project was made using https://netnet.studio
