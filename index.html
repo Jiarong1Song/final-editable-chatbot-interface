@@ -1,11 +1,23 @@
 <style>
+ 
   
+ body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+  
+  html, body {
+  background-color: hsl(226, 39%, 43%);
+}
+
 input[type="text"] {
   padding: 10px;
   font-size: 18px;
   border: none;
   border-bottom: 2px solid #ccc;
-  width: 600px;  
+  width: 500px;  
 }
 
 
@@ -14,10 +26,11 @@ input[type="text"] {
   width: 70px;
   font-size: 16px;
   height: 40px;
-  background-color: #4CAF50;
+  background-color: black;
   color: white;
   border: none;
   cursor: pointer;
+  
   
 }
   
@@ -31,10 +44,13 @@ input[type="text"] {
   border: none;
   cursor: pointer;
   display: none;
-  
+  position: absolute;
+  bottom: 5px;
+  left: 33px;
 }
+  
   .update-button {
-  padding: 10px;
+ padding: 10px;
   width: 80px;
   font-size: 16px;
   height: 40px;
@@ -43,6 +59,9 @@ input[type="text"] {
   border: none;
   cursor: pointer;
   display: none;
+  position: absolute;
+  bottom: 5px;
+  left: 33px; /* adjust as needed */
 }
   
   .new-question {
@@ -50,24 +69,27 @@ input[type="text"] {
   width: 80px;
   font-size: 16px;
   height: 40px;
-  background-color: #4CAF50;
+  background-color: black;
   color: white;
   border: none;
   cursor: pointer;
   display: none;
+  position: absolute;
+  bottom: 5px;
+  right: 31px; /* adjust as needed */
  
 }
 
 
 .message-box {
   text-align: center;
-  background-color: black;
+  background-color: hsl(203, 69%, 47%);
   color: white;
   margin-bottom: 10px;
   padding: 10px;
   font-size: 18px;
-  border: 2px solid #ccc;
-  width: 300px;
+/*   border: 2px solid #ccc; */
+  width: 500px;
   min-height: 50px;
   display: flex;
   align-items: center;
@@ -97,16 +119,17 @@ input[type="text"] {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
 
-  .red {
-  width: 280px;
-  background-color: #d75c5c;
+  .green {
+  width: 500px;
+  background-color: hsl(167, 56%, 37%);
   color: white;
   font-family: arial;
   font-weight: 450;
   font-size: 18px;
   padding: 10px;
-  text-align: center;
+  text-align: left;
   margin: 10px auto;
+  position: relative;
 }
 
 
@@ -143,7 +166,7 @@ input[type="text"] {
     const main = document.querySelector('main');
     main.appendChild(div);
   }
-  newBox('red', 'AI: How can I help you?');
+  newBox('green', 'How can I help you?');
   
  
  
@@ -159,7 +182,7 @@ input[type="text"] {
   sendBox.addEventListener("click", function () {
   const t = userInput.value
   newBox('message-box', t)
-  newBox('red', 'AI: Answering Question')
+  newBox('green', 'Sure, here are three game design ideas in brief: 1. Tower Defense: A game where the player must defend their base from waves of enemy attacks by strategically placing towers along the path. 2. Escape Room: A game where the player is trapped in a room and must solve puzzles and find clues to escape. 3. Racing Game: A game where the player competes against other players or computer-controlled opponents in a race, either on land, sea, or air.')
   messageBar.style.display = 'none'
   document.querySelector('.edit-button').style.display = 'block'
   document.querySelector('.new-question').style.display = 'block'
@@ -177,7 +200,7 @@ input[type="text"] {
    const lastBlackbox = allBlackbox[allBlackbox.length-1]
    lastBlackbox.setAttribute("contenteditable", true)
    lastBlackbox.focus()
-   lastBlackbox.style.backgroundColor = 'grey'
+   lastBlackbox.style.backgroundColor = '#acb87b'
    editQuestion.style.display = 'none'
    updateButton.style.display = 'block'
   })
@@ -185,11 +208,11 @@ input[type="text"] {
   updateButton.addEventListener("click", function(){
    const allBlackbox = document.querySelectorAll('.message-box')
    const lastBlackbox = allBlackbox[allBlackbox.length-1]
-   lastBlackbox.style.backgroundColor = 'black'
+   lastBlackbox.style.backgroundColor = 'hsl(203, 69%, 47%)'
    lastBlackbox.setAttribute("contenteditable", false)
-   const allRedbox = document.querySelectorAll('.red') 
+   const allRedbox = document.querySelectorAll('.green') 
    const lastRedbox = allRedbox[allRedbox.length-1]
-   lastRedbox.innerHTML = `<p>AI: Answering Updated Question</p>`;
+   lastRedbox.innerHTML = `<p>Answering Updated Question</p>`;
    updateButton.style.display = 'none'
    editQuestion.style.display = 'block' 
   })
