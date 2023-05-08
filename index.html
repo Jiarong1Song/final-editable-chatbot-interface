@@ -44,9 +44,10 @@ input[type="text"] {
   border: none;
   cursor: pointer;
   display: none;
-  position: fixed;
+  position: relative;
+  margin-top: 4px;
   bottom: 5px;
-  left: 60px;
+  left: 220px;
 }
   
   .update-button {
@@ -59,9 +60,10 @@ input[type="text"] {
   border: none;
   cursor: pointer;
   display: none;
-  position: fixed;
+  position: relative;
+  margin-top: 4px;
   bottom: 5px;
-  left: 33px; 
+  left: 220px; 
 }
   
   .new-question {
@@ -74,9 +76,9 @@ input[type="text"] {
   border: none;
   cursor: pointer;
   display: none;
-  position: fixed;
-  bottom: 5px;
-  right: 31px;
+  position: relative;
+  bottom: 45px;
+  left: 130px;
  
 }
 
@@ -211,6 +213,7 @@ sendBox.addEventListener("click", function () {
   messageBar.style.display = 'block'
   updateButton.style.display = 'none'  
   lastBluebox.setAttribute("contenteditable", false)
+  lastBluebox.style.height = "50px";
   lastBluebox.style.backgroundColor = 'hsl(203, 69%, 47%)'
   document.querySelector('.edit-button').style.display = 'none'
   document.querySelector('.new-question').style.display = 'none'
