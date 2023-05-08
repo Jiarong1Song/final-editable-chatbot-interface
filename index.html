@@ -194,18 +194,20 @@ input[type="text"] {
   }
 
 
-sendBox.addEventListener("click", function(){
+sendBox.addEventListener("click", function () {
   const t = userInput.value
   newBox('message-box', t)
-   //const allGreenbox = document.querySelectorAll('.green')
-   //const lastGreenbox = allGreenbox[allGreenbox.length-1]
-   //lastBluebox.style.backgroundColor = 'hsl(203, 69%, 47%)'
-   //lastBluebox.setAttribute("contenteditable", false)
-   //lastBluebox.style.height = "50px";
-   const allGreenbox = document.querySelectorAll('.green') 
+  newBox('green', 'Sure, here are three game design ideas in brief:<br><br>1. Tower Defense: A game where the player must defend their base from waves of enemy attacks by strategically placing towers along the path.<br><br>2. Escape Room: A game where the player is trapped in a room and must solve puzzles and find clues to escape.<br><br>3. Racing Game: A game where the player competes against other players or computer-controlled opponents in a race, either on land, sea, or air.')
+  messageBar.style.display = 'none'
+  document.querySelector('.edit-button').style.display = 'block'
+  document.querySelector('.new-question').style.display = 'block'
+  userInput.value = ''
+})
+  sendBox.addEventListener("click", function () {
+  const allGreenbox = document.querySelectorAll('.green') 
    const lastGreenbox = allGreenbox[allGreenbox.length-1]
    lastGreenbox.innerHTML = `<p>AI:</p>`
-   const text = 'sure here are the......'
+   const text = 'Sure, here are three game design ideas'
      let index = 0;
    const intervalId = setInterval(() => {
       if (index < text.length) {
