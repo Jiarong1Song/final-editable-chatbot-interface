@@ -44,9 +44,9 @@ input[type="text"] {
   border: none;
   cursor: pointer;
   display: none;
-  position: absolute;
+  position: fixed;
   bottom: 5px;
-  left: 33px;
+  left: 60px;
 }
   
   .update-button {
@@ -59,9 +59,9 @@ input[type="text"] {
   border: none;
   cursor: pointer;
   display: none;
-  position: absolute;
+  position: fixed;
   bottom: 5px;
-  left: 33px; /* adjust as needed */
+  left: 33px; 
 }
   
   .new-question {
@@ -74,9 +74,9 @@ input[type="text"] {
   border: none;
   cursor: pointer;
   display: none;
-  position: absolute;
+  position: fixed;
   bottom: 5px;
-  right: 31px; /* adjust as needed */
+  right: 31px;
  
 }
 
@@ -85,6 +85,7 @@ input[type="text"] {
   text-align: center;
   background-color: hsl(203, 69%, 47%);
   color: white;
+  font-family: arial;
   margin-bottom: 10px;
   padding: 10px;
   font-size: 18px;
@@ -133,7 +134,7 @@ input[type="text"] {
 }
 
 
-  .red:hover {
+  .green:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
 
@@ -143,6 +144,7 @@ input[type="text"] {
     bottom: 5px;
   }
   
+ 
 </style>
 
 <main></main>
@@ -153,66 +155,97 @@ input[type="text"] {
   <button class="send-button">Send</button>
 </div>
 
+
 <button class="edit-button">Edit</button>
 <button class="update-button">Update</button>
 <button class="new-question">New</button>
 
 
+
 <script>
-  function newBox(classname, text){
+  
+  function firstBox(classname, text){
     const div = document.createElement('div');
     div.className = classname;
     div.innerHTML = `<p>${text}</p>`;
     const main = document.querySelector('main');
     main.appendChild(div);
   }
-  newBox('green', 'How can I help you?');
+  firstBox('green', 'How can I help you?');
   
  
  
   const sendBox = document.querySelector(".send-button");
   const userInput = document.getElementById("input-box");
   const messageBar = document.getElementById("message-bar");
-  const editQuestion = document.querySelector('.edit-button')
+  const editQuestion = document.querySelector('.edit-button');
   const newQuestion = document.querySelector('.new-question');
   const updateButton = document.querySelector('.update-button')
   
-  
+  function newBox(classname, text){
+    const div = document.createElement('div');
+    div.className = classname;
+    div.innerHTML = `<p>${text}</p>`;
+    const main = document.querySelector('main');
+    main.appendChild(div);
+    
+  }
 
-  sendBox.addEventListener("click", function () {
+
+sendBox.addEventListener("click", function () {
   const t = userInput.value
   newBox('message-box', t)
-  newBox('green', 'Sure, here are three game design ideas in brief: 1. Tower Defense: A game where the player must defend their base from waves of enemy attacks by strategically placing towers along the path. 2. Escape Room: A game where the player is trapped in a room and must solve puzzles and find clues to escape. 3. Racing Game: A game where the player competes against other players or computer-controlled opponents in a race, either on land, sea, or air.')
+  newBox('green', 'Sure, here are three game design ideas in brief:<br><br>1. Tower Defense: A game where the player must defend their base from waves of enemy attacks by strategically placing towers along the path.<br><br>2. Escape Room: A game where the player is trapped in a room and must solve puzzles and find clues to escape.<br><br>3. Racing Game: A game where the player competes against other players or computer-controlled opponents in a race, either on land, sea, or air.')
   messageBar.style.display = 'none'
   document.querySelector('.edit-button').style.display = 'block'
   document.querySelector('.new-question').style.display = 'block'
   userInput.value = ''
+  
+ 
 })
+
   
   newQuestion.addEventListener("click", function() {
+  const allBluebox = document.querySelectorAll('.message-box')
+  const lastBluebox = allBluebox[allBluebox.length-1]
   messageBar.style.display = 'block'
+  updateButton.style.display = 'none'  
+  lastBluebox.setAttribute("contenteditable", false)
+  lastBluebox.style.backgroundColor = 'hsl(203, 69%, 47%)'
   document.querySelector('.edit-button').style.display = 'none'
   document.querySelector('.new-question').style.display = 'none'
   })
   
   editQuestion.addEventListener("click", function() {
-   const allBlackbox = document.querySelectorAll('.message-box')
-   const lastBlackbox = allBlackbox[allBlackbox.length-1]
-   lastBlackbox.setAttribute("contenteditable", true)
-   lastBlackbox.focus()
-   lastBlackbox.style.backgroundColor = '#acb87b'
+   const allBluebox = document.querySelectorAll('.message-box')
+   const lastBluebox = allBluebox[allBluebox.length-1]
+   lastBluebox.setAttribute("contenteditable", true)
+   lastBluebox.focus()
+   lastBluebox.style.backgroundColor = 'black'
+   lastBluebox.style.height = "100px";
    editQuestion.style.display = 'none'
    updateButton.style.display = 'block'
   })
   
   updateButton.addEventListener("click", function(){
-   const allBlackbox = document.querySelectorAll('.message-box')
-   const lastBlackbox = allBlackbox[allBlackbox.length-1]
-   lastBlackbox.style.backgroundColor = 'hsl(203, 69%, 47%)'
-   lastBlackbox.setAttribute("contenteditable", false)
-   const allRedbox = document.querySelectorAll('.green') 
-   const lastRedbox = allRedbox[allRedbox.length-1]
-   lastRedbox.innerHTML = `<p>Answering Updated Question</p>`;
+   const allBluebox = document.querySelectorAll('.message-box')
+   const lastBluebox = allBluebox[allBluebox.length-1]
+   lastBluebox.style.backgroundColor = 'hsl(203, 69%, 47%)'
+   lastBluebox.setAttribute("contenteditable", false)
+   lastBluebox.style.height = "50px";
+   const allGreenbox = document.querySelectorAll('.green') 
+   const lastGreenbox = allGreenbox[allGreenbox.length-1]
+   lastGreenbox.innerHTML = `<p>AI:</p>`
+   const text = 'Answering Updated Question'
+     let index = 0;
+   const intervalId = setInterval(() => {
+      if (index < text.length) {
+         lastGreenbox.innerHTML += text.charAt(index);
+         index++;
+      } else {
+         clearInterval(intervalId);
+      }
+   }, 25);
    updateButton.style.display = 'none'
    editQuestion.style.display = 'block' 
   })
