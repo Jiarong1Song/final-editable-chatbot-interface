@@ -194,16 +194,27 @@ input[type="text"] {
   }
 
 
-sendBox.addEventListener("click", function () {
+sendBox.addEventListener("click", function(){
   const t = userInput.value
   newBox('message-box', t)
-  newBox('green', 'Sure, here are three game design ideas in brief:<br><br>1. Tower Defense: A game where the player must defend their base from waves of enemy attacks by strategically placing towers along the path.<br><br>2. Escape Room: A game where the player is trapped in a room and must solve puzzles and find clues to escape.<br><br>3. Racing Game: A game where the player competes against other players or computer-controlled opponents in a race, either on land, sea, or air.')
-  messageBar.style.display = 'none'
-  document.querySelector('.edit-button').style.display = 'block'
-  document.querySelector('.new-question').style.display = 'block'
-  userInput.value = ''
-  
- 
+   //const allGreenbox = document.querySelectorAll('.green')
+   //const lastGreenbox = allGreenbox[allGreenbox.length-1]
+   //lastBluebox.style.backgroundColor = 'hsl(203, 69%, 47%)'
+   //lastBluebox.setAttribute("contenteditable", false)
+   //lastBluebox.style.height = "50px";
+   const allGreenbox = document.querySelectorAll('.green') 
+   const lastGreenbox = allGreenbox[allGreenbox.length-1]
+   lastGreenbox.innerHTML = `<p>AI:</p>`
+   const text = 'sure here are the......'
+     let index = 0;
+   const intervalId = setInterval(() => {
+      if (index < text.length) {
+         lastGreenbox.innerHTML += text.charAt(index);
+         index++;
+      } else {
+         clearInterval(intervalId);
+      }
+   }, 25);
 })
 
   
@@ -211,11 +222,11 @@ sendBox.addEventListener("click", function () {
   const allBluebox = document.querySelectorAll('.message-box')
   const lastBluebox = allBluebox[allBluebox.length-1]
   messageBar.style.display = 'block'
-  updateButton.style.display = 'none'  
+  updateButton.style.display = 'none' 
   lastBluebox.setAttribute("contenteditable", false)
   lastBluebox.style.height = "50px";
   lastBluebox.style.backgroundColor = 'hsl(203, 69%, 47%)'
-  document.querySelector('.edit-button').style.display = 'none'
+  //document.querySelector('.edit-button').style.display = 'none'
   document.querySelector('.new-question').style.display = 'none'
   })
   
