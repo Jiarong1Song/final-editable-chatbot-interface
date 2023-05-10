@@ -197,27 +197,31 @@ input[type="text"] {
 sendBox.addEventListener("click", function () {
   const t = userInput.value
   newBox('message-box', t)
-  newBox('green', 'Sure, here are three game design ideas in brief:<br><br>1. Tower Defense: A game where the player must defend their base from waves of enemy attacks by strategically placing towers along the path.<br><br>2. Escape Room: A game where the player is trapped in a room and must solve puzzles and find clues to escape.<br><br>3. Racing Game: A game where the player competes against other players or computer-controlled opponents in a race, either on land, sea, or air.')
+  newBox('green', '')
   messageBar.style.display = 'none'
   document.querySelector('.edit-button').style.display = 'block'
   document.querySelector('.new-question').style.display = 'block'
   userInput.value = ''
 })
+  
   sendBox.addEventListener("click", function () {
-  const allGreenbox = document.querySelectorAll('.green') 
-   const lastGreenbox = allGreenbox[allGreenbox.length-1]
-   lastGreenbox.innerHTML = `<p>AI:</p>`
-   const text = 'Sure, here are three game design ideas'
-     let index = 0;
+   const allGreenbox = document.querySelectorAll('.green');
+   const lastGreenbox = allGreenbox[allGreenbox.length - 1];
+   lastGreenbox.innerHTML = "<p>Sure, here are some ideas in brief:</p>";
+   const paragraphs = ['<p>1.xxxxxx</p>', '<p>2.xxxxxx</p>'];
+
+   let index = 0;
    const intervalId = setInterval(() => {
-      if (index < text.length) {
-         lastGreenbox.innerHTML += text.charAt(index);
+      if (index < paragraphs.length) {
+         lastGreenbox.innerHTML += paragraphs[index];
          index++;
       } else {
          clearInterval(intervalId);
       }
-   }, 25);
-})
+   }, 100);
+});
+
+
 
   
   newQuestion.addEventListener("click", function() {
@@ -228,7 +232,7 @@ sendBox.addEventListener("click", function () {
   lastBluebox.setAttribute("contenteditable", false)
   lastBluebox.style.height = "50px";
   lastBluebox.style.backgroundColor = 'hsl(203, 69%, 47%)'
-  //document.querySelector('.edit-button').style.display = 'none'
+  document.querySelector('.edit-button').style.display = 'none'
   document.querySelector('.new-question').style.display = 'none'
   })
   
@@ -252,17 +256,18 @@ sendBox.addEventListener("click", function () {
    lastBluebox.style.height = "50px";
    const allGreenbox = document.querySelectorAll('.green') 
    const lastGreenbox = allGreenbox[allGreenbox.length-1]
-   lastGreenbox.innerHTML = `<p>AI:</p>`
-   const text = 'Answering Updated Question'
-     let index = 0;
+    lastGreenbox.innerHTML = "<p>Here is the updated answer:</p>";
+   const paragraphs = ['<p>1.xxxxxx</p>', '<p>2.xxxxxx</p>'];
+
+   let index = 0;
    const intervalId = setInterval(() => {
-      if (index < text.length) {
-         lastGreenbox.innerHTML += text.charAt(index);
+      if (index < paragraphs.length) {
+         lastGreenbox.innerHTML += paragraphs[index];
          index++;
       } else {
          clearInterval(intervalId);
       }
-   }, 25);
+   }, 100);
     newQuestion.style.display = 'block'
    updateButton.style.display = 'none'
    editQuestion.style.display = 'block' 
