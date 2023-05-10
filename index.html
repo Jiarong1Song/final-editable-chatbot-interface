@@ -239,6 +239,7 @@ sendBox.addEventListener("click", function () {
    lastBluebox.focus()
    lastBluebox.style.backgroundColor = 'black'
    lastBluebox.style.height = "100px";
+   newQuestion.style.display = 'none'
    editQuestion.style.display = 'none'
    updateButton.style.display = 'block'
   })
@@ -262,6 +263,7 @@ sendBox.addEventListener("click", function () {
          clearInterval(intervalId);
       }
    }, 25);
+    newQuestion.style.display = 'block'
    updateButton.style.display = 'none'
    editQuestion.style.display = 'block' 
   })
